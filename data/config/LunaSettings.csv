@@ -1,0 +1,36 @@
+fieldID,,,,fieldName,,fieldType,defaultValue,secondaryValue,,,fieldDescription,,,minValue,maxValue,tab
+esm_price_mult,,,,Procurement price multiplier (X),,Double,4,,,,"Multiplier applied to the base price in all procurement stores (ships, weapons and fighters). X means you pay X times the base price.",,,1,100,Pricing
+esm_enable_ship_frigate,,,,Frigate Procurement,,Boolean,true,,,,Sells every non-automated frigate hull.,,,,,Ship Stores
+esm_enable_ship_destroyer,,,,Destroyer Procurement,,Boolean,true,,,,Sells every non-automated destroyer hull.,,,,,Ship Stores
+esm_enable_ship_cruiser,,,,Cruiser Procurement,,Boolean,true,,,,Sells every non-automated cruiser hull.,,,,,Ship Stores
+esm_enable_ship_capital,,,,Capital Procurement,,Boolean,true,,,,Sells every non-automated capital hull.,,,,,Ship Stores
+esm_enable_aiship_frigate,,,,AI Frigate Procurement,,Boolean,true,,,,Sells every automated frigate hull.,,,,,Ship Stores
+esm_enable_aiship_destroyer,,,,AI Destroyer Procurement,,Boolean,true,,,,Sells every automated destroyer hull.,,,,,Ship Stores
+esm_enable_aiship_cruiser,,,,AI Cruiser Procurement,,Boolean,true,,,,Sells every automated cruiser hull.,,,,,Ship Stores
+esm_enable_aiship_capital,,,,AI Capital Procurement,,Boolean,true,,,,Sells every automated capital hull.,,,,,Ship Stores
+esm_enable_weap_ballistic_small,,,,Small Ballistic,,Boolean,true,,,,Sells every small ballistic weapon.,,,,,Weapon Stores
+esm_enable_weap_ballistic_medium,,,,Medium Ballistic,,Boolean,true,,,,Sells every medium ballistic weapon.,,,,,Weapon Stores
+esm_enable_weap_ballistic_large,,,,Large Ballistic,,Boolean,true,,,,Sells every large ballistic weapon.,,,,,Weapon Stores
+esm_enable_weap_energy_small,,,,Small Energy,,Boolean,true,,,,Sells every small energy weapon.,,,,,Weapon Stores
+esm_enable_weap_energy_medium,,,,Medium Energy,,Boolean,true,,,,Sells every medium energy weapon.,,,,,Weapon Stores
+esm_enable_weap_energy_large,,,,Large Energy,,Boolean,true,,,,Sells every large energy weapon.,,,,,Weapon Stores
+esm_enable_weap_missile_small,,,,Small Missile,,Boolean,true,,,,Sells every small missile weapon.,,,,,Weapon Stores
+esm_enable_weap_missile_medium,,,,Medium Missile,,Boolean,true,,,,Sells every medium missile weapon.,,,,,Weapon Stores
+esm_enable_weap_missile_large,,,,Large Missile,,Boolean,true,,,,Sells every large missile weapon.,,,,,Weapon Stores
+esm_enable_fighter_bomber,,,,Bomber Wings,,Boolean,true,,,,Sells every bomber-role fighter wing.,,,,,Fighter Store
+esm_enable_fighter_fighter,,,,Fighter Wings,,Boolean,true,,,,Sells every fighter-role wing.,,,,,Fighter Store
+esm_enable_fighter_interceptor,,,,Interceptor Wings,,Boolean,true,,,,Sells every interceptor-role wing.,,,,,Fighter Store
+esm_enable_fighter_assault,,,,Assault Wings,,Boolean,true,,,,Sells every assault-role fighter wing.,,,,,Fighter Store
+esm_enable_fighter_support,,,,Support Wings,,Boolean,true,,,,Sells every support-role fighter wing.,,,,,Fighter Store
+esm_enable_ai_cores,,,,AI Cores Store,,Boolean,true,,,,Original store: AI cores.,,,,,Original Stores
+esm_enable_ai_derelict,,,,Derelict AI Market,,Boolean,true,,,,Original store: Domain Explorarium drone ships.,,,,,Original Stores
+esm_enable_ai_remnant,,,,Remnant AI Market,,Boolean,true,,,,Original store: Remnant drone ships.,,,,,Original Stores
+esm_enable_ai_omega,,,,Transcendent Forge,,Boolean,true,,,,Original store: Omega tech.,,,,,Original Stores
+esm_enable_redacted_roulette,,,,Redacted of the Month,,Boolean,true,,,,Original store: rotating redacted stock.,,,,,Original Stores
+esm_enable_elite_roulette,,,,Elite of the Month,,Boolean,true,,,,Original store: rotating elite stock.,,,,,Original Stores
+esm_enable_phase_emporium,,,,Phase Emporium,,Boolean,true,,,,Original store: advanced phase ships.,,,,,Original Stores
+esm_enable_xiv,,,,XIV Market,,Boolean,true,,,,Original store: XIV Battlegroup vessels.,,,,,Original Stores
+esm_enable_lions_guard,,,,Lion's Guard Market,,Boolean,true,,,,Original store: Lion's Guard vessels.,,,,,Original Stores
+esm_enable_weapon_bazaar,,,,Weapon Bazaar,,Boolean,true,,,,Original store: weapons from across the sector.,,,,,Original Stores
+esm_enable_faction_roulette,,,,Faction of the Month,,Boolean,true,,,,Original store: rotating faction stock.,,,,,Original Stores
+esm_enable_player_market,,,,Building Your Shit,,Boolean,true,,,,Original store: build from your blueprints.,,,,,Original Stores

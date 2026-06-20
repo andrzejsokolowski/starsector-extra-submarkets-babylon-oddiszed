@@ -1,0 +1,26 @@
+{
+    "id": "MM_ESM_Vanilla",
+    "name": "Extra Submarkets - Oddisz+Babylon ED.",
+    "author": "Massacre",
+    "version": "3.1",
+    "description": "Adds the Gilgamesh Nebula, a hidden hub of stations with several stores: Elite, AI Ships, Weapon Bazaar and AI Core markets; Ship and AI Ship Procurement stations selling every hull (split by class); Ballistic/Energy/Missile arsenals selling every weapon (split by size); and a Fighter Hangar selling every wing (split by role). All procurement prices and every submarket can be toggled in the LunaLib settings menu.",
+    "gameVersion": "0.98a",
+    "dependencies": [
+        {
+            "id": "lw_lazylib",
+            "name": "LazyLib"
+        },
+        {
+            "id": "lunalib",
+            "name": "LunaLib"
+        },
+        {
+            "id": "MagicLib",
+            "name": "MagicLib"
+        }
+    ],
+    "jars": [
+        "jars/MM_ExtraSubMarkets.jar"
+    ],
+    "modPlugin": "data.scripts.ESMVanillaModPlugin"
+}

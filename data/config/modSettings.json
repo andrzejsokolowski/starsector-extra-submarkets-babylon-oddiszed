@@ -1,0 +1,187 @@
+{
+    "MM_ESM_Vanilla": {
+        # --- Sell Blueprints ---
+        "eliteShipyardSellBlueprints": true,
+        "factionRouletteSellBlueprints": true,
+        "omegaMarketSellShips": true,
+        "phaseEmporiumSellBlueprints": true,
+        "redactedRouletteSellBlueprints": false,
+        "weaponBazaarSellBlueprints": true,
+
+        # --- Enabled Modules ---
+        "aiCoreMarketEnabled": true,
+        "aiShipyardEnabled": true,
+        "blackMarketEnabled": false,
+        "eliteShipyardEnabled": true,
+        "factionRouletteEnabled": true,
+        "omegaMarketEnabled": true,
+        "phaseEmporiumEnabled": true,
+        "playerMarketEnabled": true,
+        "redactedRouletteEnabled": true,
+        "eliteRouletteEnabled": true,
+        "weaponBazaarEnabled": true,
+        "shipProcurementEnabled": true,
+        "aiShipProcurementEnabled": true,
+
+        # --- Tariffs ---
+        "aiCoreMarketTariff": 4,
+        "aiShipyardTariff": 0.8,
+        "eliteShipyardTariff": 0.8,
+        "factionRouletteTariff": 0.3,
+        "omegaMarketTariff": 1,
+        "phaseEmporiumTariff": 0.3,
+        "playerMarketTariff": 0.8,
+        "weaponBazaarTariff": 1,
+        # Procurement stations: tariff 3 => 4x the base hull price
+        "shipProcurementTariff": 3,
+
+        # --- Other Numeric Settings ---
+        "omegaMarketPlayerLevelUnlock": 15,
+
+        # --- Ai Core List ---
+        "aiCoreList": {
+            "alpha_core": 2,
+            "asm_relic_beta": 2,
+            "asm_relic_delta": 6,
+            "asm_relic_gamma": 4,
+            "beta_core": 4,
+            "gamma_core": 6,
+            "ix_panopticon_core": 2,
+            "rat_chronos_core": 2,
+            "rat_cosmos_core": 2,
+            "rat_cronos_core": 2,
+            "tahlan_archdaemoncore": 2,
+            "tahlan_daemoncore": 4,
+        },
+
+        # --- Redacted Factions are whitelist only ---
+        "redactedRouletteWhitelist": [
+            "blade_breakers",
+            "domres",
+            "gestalt",
+            "hcok_pharaoh_guard",
+            "tahlan_allmother",
+            "tahlan_legiodaemons",
+            "the_deserter",
+            "zea_dawn",
+            "zea_dusk",
+            "zea_elysians",
+        ],
+
+        "redactedRouletteTechPriority": [
+            "Dawntide",
+            "Dusk",
+            "Elysia",
+            "Legio Infernalis",
+        ],
+
+        "redactedRouletteTagPriority": [
+            "tahlan_legio",
+            "tahlan_lostech",
+            "zea_common_bp",
+        ],
+
+        # --- For these factions only ships with Automated Ship hullmod will be added ---
+        "redactedRouletteAiShipsOnlyList": [
+            "hcok_pharaoh_guard",
+        ],
+
+        # --- Elite Factions are whitelist only ---
+        "eliteRouletteWhitelist": [
+            "fpe",
+            #"HMI",
+            #"independent",
+            "mayasuran_guard",
+            "ocua",
+            #"pirates",
+            "redwings",
+            "tahlan_legioelite",
+            "xlu",
+        ],
+
+        # --- Elite Market ships will be pruned if they lack priority tags or manifacturer ---
+        "eliteRouletteTechPriority": [
+            "Duinn Thunderbirds",
+            "Epattcud",
+            "F.P.E. Wunderwaffe",
+            "HMI Techmined",
+            "Iron Shell",
+            "Lion's Guard",
+            "Litho Corps",
+            "Mikanate",
+            "Nightwatch",
+            "Redwings",
+            "SCAV-CO",
+            "Unknown",
+            "VACS-INC",
+            "XIV Battlegroup",
+            "XL Ultra",
+        ],
+
+        "eliteRouletteTagPriority": [
+            "LTA_DuinnThunderbirds_bp",
+            "LTA_Epattcud_bp",
+            "fpe_wunder_bp",
+            "hmi_techmine_bp",
+            "mayasura_e_bp",
+            "ocua_mikanate",
+            "scavco_bp",
+            #"tahlan_legio",
+            "tahlan_nightwatch",
+            "xlu_40th",
+            "xlu_litho_bp",
+        ],
+
+        "eliteRouletteHullPriority": [
+            "ms_carmine_redwing",
+            "ms_mimir_redwing",
+            "ocua_elizabeth",
+            "ocua_galalixia",
+            "ocua_pandora",
+            "sv_enkidu",
+            "sv_gilgamesh",
+            "sv_megalodon",
+            "sv_portroyal",
+            "tahlan_illustrious",
+            "xlu_anthracite",
+        ],
+
+        # --- All Visible factions + this whitelist ---
+        "factionRouletteWhitelist": [
+        ],
+
+        # For factions which are either works weird, or just don't needed ---
+        "factionRouletteBlacklist": [
+            "rat_exotech",
+            "sotf_dustkeepers",
+            "sotf_dustkeepers_burnouts",
+            "sotf_dustkeepers_proxies",
+        ],
+
+        "weaponBazaarBlacklist": [
+            "sw_annihilator",
+            "sw_bfg",
+            "sw_blackhole",
+            "sw_clustertorpedo",
+            "sw_devastator",
+            "sw_flash",
+            "sw_fusionbeam",
+            "sw_gauss",
+            "sw_hyperpulse",
+            "sw_lightning_storm",
+            "sw_lightspear",
+            "sw_novax",
+            "sw_phalanx",
+            "sw_photonlense",
+            "sw_plasmastorm",
+            "sw_positronlens",
+            "sw_prismdriver",
+            "sw_railgun",
+            "sw_reflective_shield",
+            "sw_supernova",
+            "sw_tartarus",
+            "sw_terror",
+            "sw_tesla_coil",
+        ]
+    }
+}
