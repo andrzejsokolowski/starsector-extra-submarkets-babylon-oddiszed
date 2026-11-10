@@ -53,6 +53,8 @@ This mod is under the CC0 (Creative Commons Zero) License, allowing you to do wh
 [/spoiler]
 
 [spoiler=Version log]
+[b]1.0.1[/b]
+[list][li]The mod now links to this forum thread, so version checkers can point you here.[/li][/list]
 [b]1.0.0[/b]
 [list][li]First release as The Everything Shop.[/li][/list]
 [/spoiler]

@@ -1,3 +1,6 @@
+Version 1.0.1 (2026-11-10)
+- The mod now links to its forum thread, so version checkers can point you there.
+
 Version 1.0.0 (2026-11-10)
 - Renamed to The Everything Shop. It is now a separate mod with its own id: it does not update Extra Submarkets, and it needs a new game
 - The Gilgamesh Nebula is now the Gate of Babylon

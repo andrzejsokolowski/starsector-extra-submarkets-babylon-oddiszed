@@ -33,7 +33,8 @@ small quota that runs out. The workspace `AGENTS.md` has the full routine.
   `TheEverythingShop-<version>.zip` in the root. `--jar-only` stops after the jar.
 - Release metadata: `mod_info.json`, `the_everything_shop.version` (registered in
   `data/config/version/version_files.csv`), `changelog.txt`. GitHub repo
-  `andrzejsokolowski/starsector-the-everything-shop`. No forum topic yet.
+  `andrzejsokolowski/starsector-the-everything-shop`. Forum topic 36286
+  (https://fractalsoftworks.com/forum/index.php?topic=36286), `modThreadId` in both metadata files.
 - The nebula and all ten stations (including The Treasury, `tes_treasury`) are only generated in
   `onNewGameAfterProcGen`: changes to them need a new save.
 - Chicken (from Chicken's Tech Shop) was removed in 1.0.0; nothing of that mod is left. Treasury
