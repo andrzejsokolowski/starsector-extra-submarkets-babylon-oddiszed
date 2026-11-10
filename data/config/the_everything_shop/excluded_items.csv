@@ -1,0 +1,95 @@
+id,type,reason
+# Special items the Treasury never sells. type: item (an item id) or tag (every item with that tag). Other mods can add rows (merged by id).,,
+wormhole_anchor,item,Wormhole anchors are tied to one wormhole; without its data the item crashes on hover (vanilla and Industrial Evolution)
+planetkiller,item,Quest item; extra copies interfere with quest turn-ins
+topographic_data,item,Only good for selling
+vulpoid_data1,item,Only good for selling
+vulpoid_data2,item,Only good for selling
+vulpoid_data3,item,Only good for selling
+vulpoid_data4,item,Only good for selling
+vulpoid_data5,item,Only good for selling
+HSISA_ShipProvider,item,Halo Dynamics Simulacrum needs a ship and crashes without one
+special_vulpoid_codex,item,Vulpoids codex entry
+vic_booze,item,Need a mod that is not part of VIC; do nothing on their own
+vic_booze_item,item,Need a mod that is not part of VIC; do nothing on their own
+rat_exo_deed,item,Nothing uses it
+rat_ai_core_special,item,AI core wrappers; the cores are sold in the AI Cores Store
+zea_boss_core_special,item,AI core wrappers; the cores are sold in the AI Cores Store
+cs_core_ouroboros_special,item,AI core wrappers; the cores are sold in the AI Cores Store
+nex_factionSetupItem,item,Nexerelin new-game setup placeholder
+ungp_ruleitem_golden,item,New Game Plus rule cards
+ungp_ruleitem_negative,item,New Game Plus rule cards
+ungp_ruleitem_positive,item,New Game Plus rule cards
+ungp_ruleitem_milestone,item,New Game Plus rule cards
+vice_temporal_desync,item,Unused duplicate or bounty junk
+vice_pipebomb,item,Unused duplicate or bounty junk
+aotd_aquaorb,item,No building takes it
+special_ship_bp,item,AoTD special project templates
+aotd_item_bp,item,AoTD special project templates
+rs_slave,item,Template that carries a person
+sb_auricCrystal,item,"Tahlan Additions quest items, broken items and a quest trigger"
+sb_squishums,item,"Tahlan Additions quest items, broken items and a quest trigger"
+sb_bladeImprint,item,"Tahlan Additions quest items, broken items and a quest trigger"
+sb_AMmicroforge,item,"Tahlan Additions quest items, broken items and a quest trigger"
+sb_packedShip,item,"Tahlan Additions quest items, broken items and a quest trigger"
+sb_daemonpatchSpecial,item,"Tahlan Additions quest items, broken items and a quest trigger"
+sb_transcendence,item,"Tahlan Additions quest items, broken items and a quest trigger"
+cs_squishums,item,"Crab Shack: loot boxes, quest items, fishing items and items you get through the Crab Shack itself"
+cs_skongSeal,item,"Crab Shack: loot boxes, quest items, fishing items and items you get through the Crab Shack itself"
+cs_AMmicroforge,item,"Crab Shack: loot boxes, quest items, fishing items and items you get through the Crab Shack itself"
+cs_terrafragment,item,"Crab Shack: loot boxes, quest items, fishing items and items you get through the Crab Shack itself"
+cs_skeletronArms,item,"Crab Shack: loot boxes, quest items, fishing items and items you get through the Crab Shack itself"
+cs_erraticForge,item,"Crab Shack: loot boxes, quest items, fishing items and items you get through the Crab Shack itself"
+cs_alienSpiderEgg,item,"Crab Shack: loot boxes, quest items, fishing items and items you get through the Crab Shack itself"
+cs_lootBox,item,"Crab Shack: loot boxes, quest items, fishing items and items you get through the Crab Shack itself"
+cs_badTemperedLobster,item,"Crab Shack: loot boxes, quest items, fishing items and items you get through the Crab Shack itself"
+cs_planula,item,"Crab Shack: loot boxes, quest items, fishing items and items you get through the Crab Shack itself"
+cs_pocketICBM,item,"Crab Shack: loot boxes, quest items, fishing items and items you get through the Crab Shack itself"
+cs_transcendence,item,"Crab Shack: loot boxes, quest items, fishing items and items you get through the Crab Shack itself"
+cs_androidParts,item,"Crab Shack: loot boxes, quest items, fishing items and items you get through the Crab Shack itself"
+cs_mindJack,item,"Crab Shack: loot boxes, quest items, fishing items and items you get through the Crab Shack itself"
+cs_shockBomb,item,"Crab Shack: loot boxes, quest items, fishing items and items you get through the Crab Shack itself"
+cs_beaconOfInstantAdventure,item,"Crab Shack: loot boxes, quest items, fishing items and items you get through the Crab Shack itself"
+cs_inertiaNegatorNode,item,"Crab Shack: loot boxes, quest items, fishing items and items you get through the Crab Shack itself"
+cs_dubiousRemote,item,"Crab Shack: loot boxes, quest items, fishing items and items you get through the Crab Shack itself"
+cs_dubiousDisc,item,"Crab Shack: loot boxes, quest items, fishing items and items you get through the Crab Shack itself"
+cs_metallicAggregate,item,"Crab Shack: loot boxes, quest items, fishing items and items you get through the Crab Shack itself"
+cs_spo,item,"Crab Shack: loot boxes, quest items, fishing items and items you get through the Crab Shack itself"
+cs_premiumCard,item,"Crab Shack: loot boxes, quest items, fishing items and items you get through the Crab Shack itself"
+cs_baseFishItem,item,"Crab Shack: loot boxes, quest items, fishing items and items you get through the Crab Shack itself"
+cs_baseFishFood,item,"Crab Shack: loot boxes, quest items, fishing items and items you get through the Crab Shack itself"
+cs_messageBottle,item,"Crab Shack: loot boxes, quest items, fishing items and items you get through the Crab Shack itself"
+cs_fishingCatalogue,item,"Crab Shack: loot boxes, quest items, fishing items and items you get through the Crab Shack itself"
+cs_bobberRedeemItem,item,"Crab Shack: loot boxes, quest items, fishing items and items you get through the Crab Shack itself"
+cs_pocketFishPortal,item,"Crab Shack: loot boxes, quest items, fishing items and items you get through the Crab Shack itself"
+cs_mineralChunk,item,"Crab Shack: loot boxes, quest items, fishing items and items you get through the Crab Shack itself"
+exiledSector_socketable_listing,item,Exiled Sector shop listing; the mod deletes these
+exiledSector_wormhole_blueprint,item,Exiled Sector one-time unlocks
+exiledSector_gateway_upgrade_advanced,item,Exiled Sector one-time unlocks
+exiledSector_gateway_upgrade_perfected,item,Exiled Sector one-time unlocks
+IndEvo_ForgeTemplate_5,item,Industrial Evolution gives it the wrong item code; shows no hull
+IndEvo_amb,item,Ambassador; needs a person from an Embassy
+IndEvo_alpha_core,item,Industrial Evolution tooltip and debug placeholders
+IndEvo_beta_core,item,Industrial Evolution tooltip and debug placeholders
+IndEvo_gamma_core,item,Industrial Evolution tooltip and debug placeholders
+IndEvo_relicSpecialItem,item,Industrial Evolution tooltip and debug placeholders
+IndEvo_debug,item,Industrial Evolution tooltip and debug placeholders
+cq_guard_saber,item,Captain's Quarters quest rewards
+cq_amber_motes,item,Captain's Quarters quest rewards
+cq_janus_casing,item,Captain's Quarters quest rewards
+cq_pilgrim_icon,item,Captain's Quarters quest rewards
+cq_bornanew_reliquary,item,Captain's Quarters quest rewards
+cq_rao_invitation,item,Captain's Quarters quest rewards
+cq_inert_trigger,item,Captain's Quarters quest rewards
+cq_kallichore_plate,item,Captain's Quarters quest rewards
+cq_kanta_marker,item,Captain's Quarters quest rewards
+cq_survey_slab,item,Captain's Quarters quest rewards
+liminal_standing_linkage,item,Captain's Quarters quest rewards
+cq_megalobster_tank,item,Captain's Quarters pieces sold once by one market
+cq_parade_standard,item,Captain's Quarters pieces sold once by one market
+cq_signet_case,item,Captain's Quarters pieces sold once by one market
+cq_neural_soother,item,Captain's Quarters pieces sold once by one market
+cq_reliquary_lamp,item,Captain's Quarters pieces sold once by one market
+cq_tesseract_cluster,item,Captain's Quarters one-time drops
+cq_chart_core,item,Captain's Quarters one-time drops
+cq_nexus_shard,item,Captain's Quarters one-time drops

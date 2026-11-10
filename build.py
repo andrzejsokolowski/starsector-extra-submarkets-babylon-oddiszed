@@ -2,8 +2,8 @@
 
 Run from anywhere: python build.py
 Needs javac/jar (JDK 17+) on PATH and the game plus the library mods under D:/Games/StarSector.
-Writes jars/MM_ExtraSubMarkets.jar, the staging folder ExtraSubmarketsOddisz/ and
-ExtraSubmarketsOddisz-<version>.zip in the mod root.
+Writes jars/TheEverythingShop.jar, the staging folder TheEverythingShop/ and
+TheEverythingShop-<version>.zip in the mod root.
 """
 import glob
 import os
@@ -16,14 +16,14 @@ import zipfile
 ROOT = os.path.dirname(os.path.abspath(__file__))
 GAME = "D:/Games/StarSector"
 MODS = GAME + "/mods"
-STAGE_NAME = "ExtraSubmarketsOddisz"
+STAGE_NAME = "TheEverythingShop"
 STAGE = os.path.join(ROOT, STAGE_NAME)
-JAR = os.path.join(ROOT, "jars", "MM_ExtraSubMarkets.jar")
-SHIP = ["mod_info.json", "extra_submarkets_oddisz.version", "icon.png", "LICENSE-ChickenTechShop.txt", "data", "jars", "graphics"]
+JAR = os.path.join(ROOT, "jars", "TheEverythingShop.jar")
+SHIP = ["mod_info.json", "the_everything_shop.version", "icon.png", "data", "jars", "graphics"]
 
 CORE_JARS = ["starfarer.api.jar", "json.jar", "lwjgl.jar", "lwjgl_util.jar", "log4j-1.2.9.jar"]
 # Library mods, by folder name pattern. Exotica is compile-only: its classes are only
-# touched after the mod is found enabled (see data.scripts.compat.ExoticaCompat).
+# touched after the mod is found enabled (see theeverythingshop.compat.ExoticaCompat).
 LIB_GLOBS = ["MagicLib*/jars/*.jar", "LazyLib*/jars/*.jar", "LunaLib*/jars/*.jar",
              "Nexerelin*/jars/ExerelinCore.jar", "Exotica Technologies*/jars/*.jar"]
 

@@ -1,10 +1,10 @@
 {
-    "id": "MM_ESM_Vanilla",
-    "name": "Extra Submarkets - Oddisz+Babylon ED.",
-    "author": "Massacre, Oddisz (Chicken by Chickenboy)",
-    "version": "3.2.1",
-    "updateCheckURL": "https://raw.githubusercontent.com/andrzejsokolowski/starsector-extra-submarkets-babylon-oddiszed/main/extra_submarkets_oddisz.version",
-    "description": "Adds the Gilgamesh Nebula, a hidden hub of stations with several stores: Elite, AI Ships, Weapon Bazaar and AI Core markets; Ship and AI Ship Procurement stations selling every hull (split by class); Ballistic/Energy/Missile arsenals selling every weapon (split by size); a Fighter Hangar selling every wing (split by role); and Chicken's Roost, where the spacer Chicken sells every special item, blueprint, modspec and Exotica item, and offers her own missions. All procurement prices and every submarket can be toggled in the LunaLib settings menu.",
+    "id": "the_everything_shop",
+    "name": "The Everything Shop",
+    "author": "Oddisz (some stores by Massacre)",
+    "version": "1.0.0",
+    "updateCheckURL": "https://raw.githubusercontent.com/andrzejsokolowski/starsector-the-everything-shop/main/the_everything_shop.version",
+    "description": "Adds the Gate of Babylon, a nebula hidden in hyperspace whose stations sell everything: every hull, weapon and fighter wing, every AI core, and on The Treasury every special item, blueprint, modspec and Exotica item. Every shop and the procurement prices can be changed in the LunaLib settings.",
     "gameVersion": "0.98a",
     "dependencies": [
         {
@@ -21,7 +21,7 @@
         }
     ],
     "jars": [
-        "jars/MM_ExtraSubMarkets.jar"
+        "jars/TheEverythingShop.jar"
     ],
-    "modPlugin": "data.scripts.ESMVanillaModPlugin"
+    "modPlugin": "theeverythingshop.EverythingShopModPlugin"
 }

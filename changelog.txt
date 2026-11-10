@@ -1,3 +1,11 @@
+Version 1.0.0 (2026-11-10)
+- Renamed to The Everything Shop. It is now a separate mod with its own id: it does not update Extra Submarkets, and it needs a new game
+- The Gilgamesh Nebula is now the Gate of Babylon
+- Chicken is gone, with her contact entry and her missions
+- Chicken's Roost is now The Treasury, and its shops are Treasury - Specials, Blueprints, Modspecs, Exotics and Upgrades
+- Treasury prices now drop as your standing with the Independents rises
+- The LunaLib settings are now under The Everything Shop; old Extra Submarkets settings do not carry over
+
 Version 3.2.1 (2026-11-10)
 - New gold icon in mod managers (TriOS) and in LunaLib's settings.
 

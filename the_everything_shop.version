@@ -1,0 +1,12 @@
+{
+    "masterVersionFile":"https://raw.githubusercontent.com/andrzejsokolowski/starsector-the-everything-shop/main/the_everything_shop.version",
+    "modName":"The Everything Shop",
+    "directDownloadURL":"https://github.com/andrzejsokolowski/starsector-the-everything-shop/releases/download/v1.0.0/TheEverythingShop-1.0.0.zip",
+    "changelogURL":"https://raw.githubusercontent.com/andrzejsokolowski/starsector-the-everything-shop/main/changelog.txt",
+    "modVersion":
+    {
+        "major":1,
+        "minor":0,
+        "patch":0
+    }
+}
