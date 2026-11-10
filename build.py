@@ -19,7 +19,7 @@ MODS = GAME + "/mods"
 STAGE_NAME = "ExtraSubmarketsOddisz"
 STAGE = os.path.join(ROOT, STAGE_NAME)
 JAR = os.path.join(ROOT, "jars", "MM_ExtraSubMarkets.jar")
-SHIP = ["mod_info.json", "extra_submarkets_oddisz.version", "LICENSE-ChickenTechShop.txt", "data", "jars", "graphics"]
+SHIP = ["mod_info.json", "extra_submarkets_oddisz.version", "icon.png", "LICENSE-ChickenTechShop.txt", "data", "jars", "graphics"]
 
 CORE_JARS = ["starfarer.api.jar", "json.jar", "lwjgl.jar", "lwjgl_util.jar", "log4j-1.2.9.jar"]
 # Library mods, by folder name pattern. Exotica is compile-only: its classes are only

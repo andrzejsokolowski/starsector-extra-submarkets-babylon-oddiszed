@@ -2,7 +2,7 @@
     "id": "MM_ESM_Vanilla",
     "name": "Extra Submarkets - Oddisz+Babylon ED.",
     "author": "Massacre, Oddisz (Chicken by Chickenboy)",
-    "version": "3.2.0",
+    "version": "3.2.1",
     "updateCheckURL": "https://raw.githubusercontent.com/andrzejsokolowski/starsector-extra-submarkets-babylon-oddiszed/main/extra_submarkets_oddisz.version",
     "description": "Adds the Gilgamesh Nebula, a hidden hub of stations with several stores: Elite, AI Ships, Weapon Bazaar and AI Core markets; Ship and AI Ship Procurement stations selling every hull (split by class); Ballistic/Energy/Missile arsenals selling every weapon (split by size); a Fighter Hangar selling every wing (split by role); and Chicken's Roost, where the spacer Chicken sells every special item, blueprint, modspec and Exotica item, and offers her own missions. All procurement prices and every submarket can be toggled in the LunaLib settings menu.",
     "gameVersion": "0.98a",

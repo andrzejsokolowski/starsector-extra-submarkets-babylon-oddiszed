@@ -1,3 +1,6 @@
+Version 3.2.1 (2026-11-10)
+- New gold icon in mod managers (TriOS) and in LunaLib's settings.
+
 Version 3.2.0 (2026-11-10)
 - New station Chicken's Roost in the Gilgamesh Nebula, also added to existing saves when they load
 - Chicken (from Chicken's Tech Shop) lives there as a contact from the start and offers her dead drop, jailbreak, smuggling and spy satellite jobs
