@@ -1,0 +1,58 @@
+[center][size=28pt][url=https://github.com/andrzejsokolowski/starsector-the-everything-shop/releases/latest][b]The Everything Shop[/b][/url][/size]
+[img width=128]https://raw.githubusercontent.com/andrzejsokolowski/starsector-the-everything-shop/main/icon.png[/img]
+[url=https://github.com/andrzejsokolowski/starsector-the-everything-shop/releases/latest][img]https://img.shields.io/github/downloads/andrzejsokolowski/starsector-the-everything-shop/total?style=for-the-badge&label=download[/img][/url]  [url=https://github.com/andrzejsokolowski/starsector-the-everything-shop][img]https://img.shields.io/github/v/release/andrzejsokolowski/starsector-the-everything-shop?display_name=tag&sort=semver&style=for-the-badge&label=source[/img][/url]
+[/center]
+[center][b]
+WHAT DOES THIS MOD DO?
+Somewhere in hyperspace hides a nebula called the Gate of Babylon.
+Its stations sell everything: every hull, weapon, fighter wing, AI core, special item, blueprint and modspec from every mod you have installed.
+It is a cheat mod. Prices are steep, but nothing is out of reach.
+Needs LazyLib, LunaLib and MagicLib. Start a new game after installing it.
+[/b][/center]
+
+[hr][center][size=12pt][b]The stations[/b][/size][/center][hr]
+[list]
+[li][b]Ship Procurement Station[/b]: every hull that needs a crew, one shop per size (frigate, destroyer, cruiser, capital).[/li]
+[li][b]AI Ship Procurement Station[/b]: every automated hull, one shop per size.[/li]
+[li][b]Ballistic, Energy and Missile Arsenals[/b]: every weapon of that type, one shop per mount size.[/li]
+[li][b]Fighter Hangar[/b]: every fighter wing, one shop per role (fighter, bomber, interceptor, assault, support).[/li]
+[li][b]The Treasury[/b]: every special item you can use, every blueprint package and rare blueprint, a modspec for every hull mod you don't know yet, and with Exotica Technologies every exotic and upgrade. 999 of each, restocked every month. Prices drop as your standing with the Independents rises.[/li]
+[li][b][REDACTED][/b]: every AI core from every mod, Derelict and Remnant drone ships, the Transcendent Forge and a monthly rotating stock.[/li]
+[li][b]Elite Vessels[/b]: a monthly elite stock, the Phase Emporium, the XIV and Lion's Guard markets.[/li]
+[li][b]General Trade[/b]: the Weapon Bazaar, Faction of the Month, and a shipyard that builds from the blueprints you send it.[/li]
+[/list]
+
+[hr][center][size=12pt][b]Settings[/b][/size][/center][hr]
+[list]
+[li]Every shop can be switched off in the LunaLib settings, and the change applies right away.[/li]
+[li]One price setting for all procurement shops (ships, weapons and wings): you pay that many times the normal price. Default 4.[/li]
+[li]Other mods can keep items out of the Treasury by adding rows to data/config/the_everything_shop/excluded_items.csv.[/li]
+[/list]
+
+[hr][center][size=12pt][b]Compatibility[/b][/size][/center][hr]
+[list]
+[li]The nebula is created when a new game starts, so the mod needs a new game.[/li]
+[li]Quest items, wormhole anchors, other mods' loot boxes and items that crash without their data are never sold.[/li]
+[li]Exotica Technologies is optional. Without it, the Exotics and Upgrades shops stay closed.[/li]
+[li]This mod grew out of Extra Submarkets but is a separate mod now. Do not run both.[/li]
+[/list]
+
+[spoiler=Credits]
+Some of the stores (the AI, Elite and General Trade stations) and the nebula started as Extra Submarkets by Massacre.
+[/spoiler]
+
+[spoiler=AI use disclaimer]Some or all assets and code in this mod were created using AI tools:
+[list]
+[li]Code: Claude Code (Claude Opus 5.5)[/li]
+[li]Text (this post): Claude Code (Claude Opus 5.5)[/li]
+[li]Mod icon: drawn by a script written with Claude Code (Claude Opus 5.5)[/li][/list]
+[/spoiler]
+
+[spoiler=License]
+This mod is under the CC0 (Creative Commons Zero) License, allowing you to do whatever you want with the code, without giving any credit to anyone.
+[/spoiler]
+
+[spoiler=Version log]
+[b]1.0.0[/b]
+[list][li]First release as The Everything Shop.[/li][/list]
+[/spoiler]
