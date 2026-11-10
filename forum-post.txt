@@ -34,6 +34,7 @@ Needs LazyLib, LunaLib and MagicLib. Start a new game after installing it.
 [li]The nebula is created when a new game starts, so the mod needs a new game.[/li]
 [li]Quest items, wormhole anchors, other mods' loot boxes and items that crash without their data are never sold.[/li]
 [li]Exotica Technologies is optional. Without it, the Exotics and Upgrades shops stay closed.[/li]
+[li]Made for Exotica Technologies 2.1.1. Other versions and forks of Exotica work if they keep the same item format. If a fork changed it, the Exotics and Upgrades shops stay empty instead of crashing the game.[/li]
 [li]This mod grew out of Extra Submarkets but is a separate mod now. Do not run both.[/li]
 [/list]
 
