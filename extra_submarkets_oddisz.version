@@ -1,0 +1,12 @@
+{
+    "masterVersionFile":"https://raw.githubusercontent.com/andrzejsokolowski/starsector-extra-submarkets-babylon-oddiszed/main/extra_submarkets_oddisz.version",
+    "modName":"Extra Submarkets - Oddisz+Babylon ED.",
+    "directDownloadURL":"https://github.com/andrzejsokolowski/starsector-extra-submarkets-babylon-oddiszed/releases/download/v3.2.0/ExtraSubmarketsOddisz-3.2.0.zip",
+    "changelogURL":"https://raw.githubusercontent.com/andrzejsokolowski/starsector-extra-submarkets-babylon-oddiszed/main/changelog.txt",
+    "modVersion":
+    {
+        "major":3,
+        "minor":2,
+        "patch":0
+    }
+}

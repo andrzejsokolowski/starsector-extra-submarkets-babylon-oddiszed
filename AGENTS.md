@@ -24,14 +24,21 @@ small quota that runs out. The workspace `AGENTS.md` has the full routine.
 
 ## Essentials
 
-- id `MM_ESM_Vanilla`, Java. The IntelliJ library paths only resolve under
-  `D:\Games\StarSector\mods`, so build from the command line: `javac --release 17` against
-  `D:\Games\StarSector\starsector-core\{starfarer.api,json,lwjgl,lwjgl_util}.jar` plus the
-  MagicLib, LazyLib, LunaLib and Nexerelin jars from `D:\Games\StarSector\mods`, then
-  `jar --create --file jars/MM_ExtraSubMarkets.jar -C <build dir> .`.
-- Station and nebula generation only runs in `onNewGameAfterProcGen`: world changes need a new
-  save.
-- The game loads a separate copy at `D:\Games\StarSector\mods\$$$ Extra Submarkets (Babylon Ed)-2.0`.
-  Andrzej copies the jar there by hand. Do not copy into the game folder.
+- id `MM_ESM_Vanilla`, Java. Build with `python build.py`: it compiles the jar with `javac --release 17`
+  against the game and the library mods in `D:\Games\StarSector\mods` (MagicLib, LazyLib, LunaLib,
+  Nexerelin, and Exotica Technologies as compile-only), then stages `ExtraSubmarketsOddisz/` and writes
+  `ExtraSubmarketsOddisz-<version>.zip` in the root. `--jar-only` stops after the jar.
+- Release metadata: `mod_info.json`, `extra_submarkets_oddisz.version` (registered in
+  `data/config/version/version_files.csv`), `changelog.txt`. No forum topic.
+- Chicken's Roost (station `esm_chicken_roost`, Chicken = person `esm_chicken`) and her shops are created
+  on every game load when missing, so existing saves get them. The other stations and the nebula are
+  only generated in `onNewGameAfterProcGen`: changes to them need a new save.
+- Chicken, her missions and the shop code came from Chicken's Tech Shop by Chickenboy (MIT); keep
+  `LICENSE-ChickenTechShop.txt` in the release.
+- Exotica Technologies is touched only by `data.scripts.compat.ExoticaBridge`, through `ExoticaCompat`,
+  which catches `LinkageError` so a missing or different Exotica fork just closes the Exotica shops.
+- Which special items are sold: `data.scripts.chicken.SpecialItemRules` (plain items), `DataItemStock`
+  (items that need data), `data/config/esm_chicken/excluded_items.csv` (never sold).
+- Andrzej installs releases through his mod manager. Do not copy into the game folder.
 - In PowerShell, run any cleanup that uses `Remove-Item` as its own command, apart from commands
   naming `C:\Program...` paths (the sandbox blocks the combination).

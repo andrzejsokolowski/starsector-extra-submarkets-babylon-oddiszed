@@ -34,3 +34,8 @@ esm_enable_lions_guard,,,,Lion's Guard Market,,Boolean,true,,,,Original store: L
 esm_enable_weapon_bazaar,,,,Weapon Bazaar,,Boolean,true,,,,Original store: weapons from across the sector.,,,,,Original Stores
 esm_enable_faction_roulette,,,,Faction of the Month,,Boolean,true,,,,Original store: rotating faction stock.,,,,,Original Stores
 esm_enable_player_market,,,,Building Your Shit,,Boolean,true,,,,Original store: build from your blueprints.,,,,,Original Stores
+esm_enable_chicken_specials,,,,Chicken's Tech - Specials,,Boolean,true,,,,"Chicken's Roost: every special item you can use, 999 of each.",,,,,Chicken's Roost
+esm_enable_chicken_blueprints,,,,Chicken's Tech - Blueprints,,Boolean,true,,,,"Chicken's Roost: every blueprint package and every rare ship, weapon and fighter blueprint.",,,,,Chicken's Roost
+esm_enable_chicken_modspecs,,,,Chicken's Tech - Modspecs,,Boolean,true,,,,Chicken's Roost: a modspec for every hull mod you don't know yet.,,,,,Chicken's Roost
+esm_enable_chicken_exotics,,,,Chicken's Tech - Exotics,,Boolean,true,,,,"Chicken's Roost, with Exotica Technologies only: every exotic in its normal, corrupted and pure form.",,,,,Chicken's Roost
+esm_enable_chicken_upgrades,,,,Chicken's Tech - Upgrades,,Boolean,true,,,,"Chicken's Roost, with Exotica Technologies only: every upgrade at every level.",,,,,Chicken's Roost

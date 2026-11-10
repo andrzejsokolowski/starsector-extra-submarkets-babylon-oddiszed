@@ -7,42 +7,110 @@ import com.fs.starfarer.api.fleet.FleetMemberAPI;
 import com.fs.starfarer.api.impl.campaign.submarkets.BaseSubmarketPlugin;
 import org.magiclib.util.MagicSettings;
 
-import java.util.Map;
+import com.fs.starfarer.api.campaign.econ.CommoditySpecAPI;
+import com.fs.starfarer.api.impl.campaign.ids.Commodities;
+import com.fs.starfarer.api.util.Misc;
+import org.apache.log4j.Logger;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
 
 import static data.scripts.ESMVanillaModPlugin.ESM_MOD_ID;
 
+/**
+ * AI Cores Store: every AI core from every installed mod, 999 of each, topped up on every visit.
+ * A commodity is a core if it has the ai_core tag, the ai_cores demand class, or a core
+ * officer or admin plugin (RAT, Tahlan, Crab Shack and others only have the plugin).
+ */
 public class ExtraStoreAICores extends BaseSubmarketPlugin {
 
+    public static final Logger log = Global.getLogger(ExtraStoreAICores.class);
+    public static final int STOCK = 999;
+
     public static float MARKET_TARIFF = MagicSettings.getFloat(ESM_MOD_ID, "aiCoreMarketTariff");
-    public static Map<String, Float> AI_CORE_LIST = MagicSettings.getFloatMap(ESM_MOD_ID, "aiCoreList");
 
     public ExtraStoreAICores() {
     }
 
     @Override
     public void updateCargoPrePlayerInteraction() {
-        //log.info("Days since update: " + sinceLastCargoUpdate);
-        if (sinceLastCargoUpdate < 30) return;
         sinceLastCargoUpdate = 0f;
 
         CargoAPI cargo = getCargo();
-
-        // Empty Store
         cargo.clear();
         cargo.getMothballedShips().clear();
         cargo.removeEmptyStacks();
 
-        for (Map.Entry<String, Float> entry : AI_CORE_LIST.entrySet()) {
-            String itemId = entry.getKey();
-            float rawAmount = entry.getValue();
-
-            if (Global.getSettings().getCommoditySpec(itemId) != null) {
-                int amount = (int) rawAmount;
-                cargo.addCommodity(itemId, amount);
+        Set<String> single = new HashSet<String>(settingList("aiCoreSingle"));
+        for (String id : findAICoreIds()) {
+            try {
+                boolean one = single.contains(id) || id.startsWith("sotf_ichip_");
+                cargo.addCommodity(id, one ? 1 : STOCK);
+            } catch (Throwable t) {
+                log.warn("Skipping AI core " + id, t);
             }
         }
-
+        cargo.removeEmptyStacks();
         cargo.sort();
+    }
+
+    public static List<String> findAICoreIds() {
+        Set<String> exclude = new HashSet<String>(settingList("aiCoreExclude"));
+        Set<String> result = new LinkedHashSet<String>();
+        for (CommoditySpecAPI spec : Global.getSettings().getAllCommoditySpecs()) {
+            String id = spec.getId();
+            if (id == null || exclude.contains(id) || id.endsWith("_nodrop")
+                    || id.contains("playercore") || id.contains("player_core")) {
+                continue;
+            }
+            // SotF instance chips are named characters: only the ones the player can own
+            if (id.startsWith("sotf_ichip_") && spec.hasTag("no_drop")) {
+                continue;
+            }
+            boolean core = spec.hasTag(Commodities.TAG_AI_CORE) || Commodities.AI_CORES.equals(spec.getDemandClass());
+            if (!core) {
+                try {
+                    core = Misc.getAICoreOfficerPlugin(id) != null || Misc.getAICoreAdminPlugin(id) != null;
+                } catch (Throwable t) {
+                    // a broken plugin from another mod: not a core we can sell
+                }
+            }
+            if (core) {
+                result.add(id);
+            }
+        }
+        for (String id : settingList("aiCoreExtra")) {
+            try {
+                if (Global.getSettings().getCommoditySpec(id) != null) {
+                    result.add(id);
+                }
+            } catch (Throwable t) {
+                // not installed
+            }
+        }
+        return new ArrayList<String>(result);
+    }
+
+    /** Empty the shelves before a save; they fill again on the next visit. */
+    public void clearForSave() {
+        getCargo().clear();
+        getCargo().removeEmptyStacks();
+    }
+
+    private static List<String> settingList(String key) {
+        try {
+            List<String> list = MagicSettings.getList(ESM_MOD_ID, key);
+            if (list != null) {
+                return list;
+            }
+        } catch (Throwable t) {
+            // missing setting
+        }
+        return Collections.<String>emptyList();
     }
 
     //==========================================================================

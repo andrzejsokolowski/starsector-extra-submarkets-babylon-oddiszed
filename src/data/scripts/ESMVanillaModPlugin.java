@@ -5,7 +5,13 @@ import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.SectorEntityToken;
 import com.fs.starfarer.api.campaign.StarSystemAPI;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
+import data.scripts.chicken.Chicken;
+import data.scripts.compat.ExoticaCompat;
 import data.scripts.world.ExtraStoreSystem;
+import data.scripts.world.submarkets.ExtraStoreAICores;
+import data.scripts.world.submarkets.ExtraStoreChickenBase;
+import com.fs.starfarer.api.campaign.SubmarketPlugin;
+import com.fs.starfarer.api.campaign.econ.SubmarketAPI;
 import lunalib.lunaSettings.LunaSettings;
 import lunalib.lunaSettings.LunaSettingsListener;
 import org.lwjgl.util.vector.Vector2f;
@@ -18,11 +24,16 @@ public class ESMVanillaModPlugin extends BaseModPlugin implements LunaSettingsLi
 
     /** Add or remove a submarket on a station's market based on its LunaLib toggle. */
     private void register(String stationId, String submarketId, String settingId, boolean def) {
+        register(stationId, submarketId, settingId, def, true);
+    }
+
+    /** As above; {@code available} false always removes the submarket (its mod is missing). */
+    private void register(String stationId, String submarketId, String settingId, boolean def, boolean available) {
         SectorEntityToken entity = Global.getSector().getEntityById(stationId);
         if (entity == null || entity.getMarket() == null) return;
 
         MarketAPI market = entity.getMarket();
-        boolean isEnabled = ESMSettings.enabled(settingId, def);
+        boolean isEnabled = available && ESMSettings.enabled(settingId, def);
 
         if (isEnabled) {
             if (!market.hasSubmarket(submarketId)) market.addSubmarket(submarketId);
@@ -81,6 +92,14 @@ public class ESMVanillaModPlugin extends BaseModPlugin implements LunaSettingsLi
         register("esm_fighter_store", "extra_submarkets_fighter_interceptor", "esm_enable_fighter_interceptor", true);
         register("esm_fighter_store", "extra_submarkets_fighter_assault", "esm_enable_fighter_assault", true);
         register("esm_fighter_store", "extra_submarkets_fighter_support", "esm_enable_fighter_support", true);
+
+        // --- Chicken's Roost: Chicken's Tech shops ---
+        register(Chicken.STATION_ID, "esm_chicken_specials", "esm_enable_chicken_specials", true);
+        register(Chicken.STATION_ID, "esm_chicken_blueprints", "esm_enable_chicken_blueprints", true);
+        register(Chicken.STATION_ID, "esm_chicken_modspecs", "esm_enable_chicken_modspecs", true);
+        boolean exotica = ExoticaCompat.isAvailable();
+        register(Chicken.STATION_ID, "esm_chicken_exotics", "esm_enable_chicken_exotics", true, exotica);
+        register(Chicken.STATION_ID, "esm_chicken_upgrades", "esm_enable_chicken_upgrades", true, exotica);
     }
 
     @Override
@@ -97,6 +116,11 @@ public class ESMVanillaModPlugin extends BaseModPlugin implements LunaSettingsLi
 
     @Override
     public void onGameLoad(boolean newGame) {
+        try {
+            Chicken.ensure();
+        } catch (Throwable t) {
+            Global.getLogger(ESMVanillaModPlugin.class).error("Could not set up Chicken's Roost", t);
+        }
         marketsInitialSetup();
         // Apply enable/disable toggles live when the player changes them in the LunaLib menu.
         try {
@@ -105,6 +129,26 @@ public class ESMVanillaModPlugin extends BaseModPlugin implements LunaSettingsLi
             }
         } catch (Throwable t) {
             // LunaLib not available; settings still apply on the next load via marketsInitialSetup.
+        }
+    }
+
+    @Override
+    public void beforeGameSave() {
+        try {
+            for (String stationId : new String[] { Chicken.STATION_ID, "esm_ai_store" }) {
+                SectorEntityToken entity = Global.getSector().getEntityById(stationId);
+                if (entity == null || entity.getMarket() == null) continue;
+                for (SubmarketAPI submarket : entity.getMarket().getSubmarketsCopy()) {
+                    SubmarketPlugin plugin = submarket.getPlugin();
+                    if (plugin instanceof ExtraStoreChickenBase) {
+                        ((ExtraStoreChickenBase) plugin).clearForSave();
+                    } else if (plugin instanceof ExtraStoreAICores) {
+                        ((ExtraStoreAICores) plugin).clearForSave();
+                    }
+                }
+            }
+        } catch (Throwable t) {
+            Global.getLogger(ESMVanillaModPlugin.class).error("Could not empty the shops before saving", t);
         }
     }
 

@@ -39,20 +39,26 @@
         "omegaMarketPlayerLevelUnlock": 15,
 
         # --- Ai Core List ---
-        "aiCoreList": {
-            "alpha_core": 2,
-            "asm_relic_beta": 2,
-            "asm_relic_delta": 6,
-            "asm_relic_gamma": 4,
-            "beta_core": 4,
-            "gamma_core": 6,
-            "ix_panopticon_core": 2,
-            "rat_chronos_core": 2,
-            "rat_cosmos_core": 2,
-            "rat_cronos_core": 2,
-            "tahlan_archdaemoncore": 2,
-            "tahlan_daemoncore": 4,
-        },
+        # --- AI Cores Store ---
+        # The store finds every AI core on its own (ai_core tag, ai_cores demand class, or a
+        # core officer/admin plugin) and sells 999 of each. Ids here are added even if not found.
+        "aiCoreExtra": [
+        ],
+        # Ids never sold: placeholders, "player as core" links, cores another mod deletes
+        # from cargo, single named characters and cores that do nothing.
+        "aiCoreExclude": [
+            "ai_cores",
+            "cs_playercore", "sb_playercore", "sb_core_delicious",
+            "sc_neural_junction", "tahlan_neurallink",
+            "xo_synthesis_core", "ix_broken_core", "ix_command_core",
+            "vice_cyanine_shard_nodrop",
+            "sotf_sierracore_officer", "sotf_projectsiren_core",
+            "zea_dormant_dusk_boss_core", "ix_panopticon_watcher", "rs_raphaelacore_officer",
+        ],
+        # The Assimilator Core is always the same person: one at a time.
+        "aiCoreSingle": [
+            "cs_core_ouroboros",
+        ],
 
         # --- Redacted Factions are whitelist only ---
         "redactedRouletteWhitelist": [

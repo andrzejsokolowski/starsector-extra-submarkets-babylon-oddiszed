@@ -184,7 +184,7 @@ public class ExtraStoreSystem {
         }
     }
 
-    private static void createMallStation(StarSystemAPI system, SectorEntityToken center, String id, String type, String name, float angle, float radius) {
+    public static void createMallStation(StarSystemAPI system, SectorEntityToken center, String id, String type, String name, float angle, float radius) {
         SectorEntityToken station = system.addCustomEntity(id, name, type, Factions.NEUTRAL);
 
         // Direct angle-based orbit

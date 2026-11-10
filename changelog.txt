@@ -1,0 +1,12 @@
+Version 3.2.0 (2026-11-10)
+- New station Chicken's Roost in the Gilgamesh Nebula, also added to existing saves when they load
+- Chicken (from Chicken's Tech Shop) lives there as a contact from the start and offers her dead drop, jailbreak, smuggling and spy satellite jobs
+- Chicken's Tech - Specials: every usable special item from every installed mod, 999 of each, including items that need a target: RAT hull alteration installers, Exiled Sector hull items, star charts and schematics, Industrial Evolution VPCs, consumables, forge templates and cryochambers, UAF keycards, Threat hull mod parts, the SotF Daydream Analyzer, Crab Shack Gene Splicers and Forming Fluid, Sephira Conclave items and more
+- Quest items, one-off rewards, wormhole anchors, Crab Shack loot boxes and items that crash without their data are kept out (list in data/config/esm_chicken/excluded_items.csv)
+- Chicken's Tech - Blueprints: every blueprint package and every rare ship, weapon and fighter blueprint
+- Chicken's Tech - Modspecs: a modspec for every hull mod you don't know yet (RAT alterations are not offered as modspecs)
+- Chicken's Tech - Exotics and Upgrades (only with Exotica Technologies): every exotic in every form and every upgrade at every level
+- Prices on Chicken's Roost drop as your standing with Chicken rises
+- AI Cores Store: now sells every AI core from every installed mod, 999 of each, instead of a fixed list
+- Every new shop can be switched off in the LunaLib settings
+- Replaces the Chicken's Tech Shop mod: disable it to avoid two Chickens
