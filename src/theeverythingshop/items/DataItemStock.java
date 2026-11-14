@@ -69,7 +69,7 @@ public class DataItemStock {
         stock.run("RAT hull alterations", new Runnable() { public void run() { stock.ratAlterations(); } });
         stock.run("RAT artifacts", new Runnable() { public void run() { stock.ratArtifacts(); } });
         stock.run("Elysian Data Recorders", new Runnable() { public void run() { stock.zeaRecorders(); } });
-        stock.run("Knowledge Superconstructs", new Runnable() { public void run() { stock.superconstructs(); } });
+        stock.run("Knowledge Constructs", new Runnable() { public void run() { stock.superconstructs(); } });
         stock.run("Vulpoids", new Runnable() { public void run() { stock.vulpoids(); } });
         stock.run("Exiled Sector items", new Runnable() { public void run() { stock.exiledSector(); } });
         stock.run("Gene Splicers", new Runnable() { public void run() { stock.geneSplicers(); } });
@@ -217,8 +217,13 @@ public class DataItemStock {
     }
 
 
-    // Ship Mastery: the three superconstructs only work with their "active" data
+    // Ship Mastery: the blank Knowledge Construct (the one SMS makes from shared mastery;
+    // right-click it to pick any ship), and the three superconstructs, which only work
+    // with their "active" data. The per-hull constructs are not sold.
     private void superconstructs() {
+        if (hasItem("sms_construct")) {
+            add("sms_construct", "sms_PlayerCreated_");
+        }
         for (String id : new String[] { "sms_superconstruct1", "sms_superconstruct2", "sms_superconstruct3" }) {
             if (hasItem(id)) {
                 add(id, "sms_BlankConstructActive");

@@ -1,3 +1,6 @@
+Version 1.0.3 (2026-11-14)
+- Specials now sells the blank Ship Mastery Knowledge Construct (the one you can use on any ship)
+
 Version 1.0.2 (2026-11-14)
 - The Treasury's shops are now called Specials, Blueprints, Hullmod Specs, Exotics and Upgrades, so the names fit on their tabs
 - Hullmod Specs and Blueprints sell one of each, and anything you already know or bought there is not offered again
