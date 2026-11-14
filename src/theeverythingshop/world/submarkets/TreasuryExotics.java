@@ -5,8 +5,8 @@ import com.fs.starfarer.api.campaign.SpecialItemData;
 import theeverythingshop.compat.ExoticaCompat;
 
 /**
- * Treasury - Exotics (Exotica Technologies only): every exotic in every form
- * (normal, corrupted, pure and the fork's guerilla), and the items that install an exotic.
+ * Exotics (Exotica Technologies only): every exotic chip in every form (normal, corrupted,
+ * pure and the fork's guerilla). Exotics that install from an AI core get no chip.
  */
 public class TreasuryExotics extends TreasuryShopBase {
 
@@ -14,9 +14,6 @@ public class TreasuryExotics extends TreasuryShopBase {
     protected void addStock(CargoAPI cargo) {
         for (String[] entry : ExoticaCompat.listExotics()) {
             addSafely(cargo, entry[0], entry[1]);
-        }
-        for (String id : ExoticaCompat.listInstallItems()) {
-            addSafely(cargo, id, null);
         }
     }
 
@@ -31,6 +28,6 @@ public class TreasuryExotics extends TreasuryShopBase {
 
     @Override
     protected String getDisplayName() {
-        return "Treasury - Exotics";
+        return "Exotics";
     }
 }

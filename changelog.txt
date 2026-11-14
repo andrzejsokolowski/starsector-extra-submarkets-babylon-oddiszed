@@ -1,3 +1,12 @@
+Version 1.0.2 (2026-11-14)
+- The Treasury's shops are now called Specials, Blueprints, Hullmod Specs, Exotics and Upgrades, so the names fit on their tabs
+- Hullmod Specs and Blueprints sell one of each, and anything you already know or bought there is not offered again
+- Blueprint packages leave the shop once you know everything in them
+- Station Augment blueprints, RAT industry blueprints, AoTD Citadel Schematics and Exiled Sector schematics moved from Specials to Blueprints
+- Specials no longer sells Ship Mastery Knowledge Constructs, Industrial Evolution forge templates or IndEvo pet cryochambers
+- Exotics no longer sells chips for exotics that install from an AI core (Alpha Subcore, Subsumed Alpha, Beta and Gamma Core, Daemon Core), or Exotica's install items that the game never hands out
+- Shop lists are sorted by mod, then by name
+
 Version 1.0.1 (2026-11-10)
 - The mod now links to its forum thread, so version checkers can point you there.
 

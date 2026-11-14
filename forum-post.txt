@@ -16,7 +16,7 @@ Needs LazyLib, LunaLib and MagicLib. Start a new game after installing it.
 [li][b]AI Ship Procurement Station[/b]: every automated hull, one shop per size.[/li]
 [li][b]Ballistic, Energy and Missile Arsenals[/b]: every weapon of that type, one shop per mount size.[/li]
 [li][b]Fighter Hangar[/b]: every fighter wing, one shop per role (fighter, bomber, interceptor, assault, support).[/li]
-[li][b]The Treasury[/b]: every special item you can use, every blueprint package and rare blueprint, a modspec for every hull mod you don't know yet, and with Exotica Technologies every exotic and upgrade. 999 of each, restocked every month. Prices drop as your standing with the Independents rises.[/li]
+[li][b]The Treasury[/b]: every special item you can use, 999 of each; one of each blueprint and hullmod spec you don't know yet; and with Exotica Technologies every exotic chip and every upgrade chip. Prices drop as your standing with the Independents rises.[/li]
 [li][b][REDACTED][/b]: every AI core from every mod, Derelict and Remnant drone ships, the Transcendent Forge and a monthly rotating stock.[/li]
 [li][b]Elite Vessels[/b]: a monthly elite stock, the Phase Emporium, the XIV and Lion's Guard markets.[/li]
 [li][b]General Trade[/b]: the Weapon Bazaar, Faction of the Month, and a shipyard that builds from the blueprints you send it.[/li]
@@ -54,6 +54,8 @@ This mod is under the CC0 (Creative Commons Zero) License, allowing you to do wh
 [/spoiler]
 
 [spoiler=Version log]
+[b]1.0.2[/b]
+[list][li]The Treasury's shops are now called Specials, Blueprints, Hullmod Specs, Exotics and Upgrades, so the names fit on their tabs.[/li][li]Hullmod Specs and Blueprints sell one of each, and anything you already know or bought there is not offered again.[/li][li]Blueprint packages leave the shop once you know everything in them.[/li][li]Station Augment blueprints, RAT industry blueprints, AoTD Citadel Schematics and Exiled Sector schematics moved from Specials to Blueprints.[/li][li]Specials no longer sells Ship Mastery Knowledge Constructs, Industrial Evolution forge templates or IndEvo pet cryochambers.[/li][li]Exotics no longer sells chips for exotics that install from an AI core (Alpha Subcore, Subsumed Alpha, Beta and Gamma Core, Daemon Core), or Exotica's install items that the game never hands out.[/li][li]Shop lists are sorted by mod, then by name.[/li][/list]
 [b]1.0.1[/b]
 [list][li]The mod now links to this forum thread, so version checkers can point you here.[/li][/list]
 [b]1.0.0[/b]

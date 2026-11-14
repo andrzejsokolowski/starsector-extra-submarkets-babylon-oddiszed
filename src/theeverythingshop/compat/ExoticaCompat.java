@@ -4,7 +4,11 @@ import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.SpecialItemSpecAPI;
 import org.apache.log4j.Logger;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.List;
 
 /**
@@ -39,12 +43,27 @@ public final class ExoticaCompat {
         }
     }
 
+    /**
+     * Exotics that normally install from an AI core (alpha, beta, gamma, Tahlan's archdaemon
+     * core), not from a chip: their chips never drop, so they aren't sold. The cores are in the
+     * AI Cores Store.
+     */
+    private static final Set<String> INSTALLED_FROM_CORES = new HashSet<String>(Arrays.asList(
+            "AlphaSubcore", "SubsumedAlphaCore", "SubsumedBetaCore", "SubsumedGammaCore", "DaemonCore"));
+
     public static List<String[]> listExotics() {
         if (!isAvailable()) {
             return Collections.emptyList();
         }
         try {
-            return ExoticaBridge.listExotics();
+            List<String[]> out = new ArrayList<String[]>();
+            for (String[] entry : ExoticaBridge.listExotics()) {
+                String key = entry[1].split(",")[0];
+                if (!INSTALLED_FROM_CORES.contains(key)) {
+                    out.add(entry);
+                }
+            }
+            return out;
         } catch (LinkageError e) {
             log.warn("Exotica Technologies version not compatible, no exotics stocked", e);
         } catch (RuntimeException e) {
@@ -63,20 +82,6 @@ public final class ExoticaCompat {
             log.warn("Exotica Technologies version not compatible, no upgrades stocked", e);
         } catch (RuntimeException e) {
             log.warn("Could not list Exotica upgrades", e);
-        }
-        return Collections.emptyList();
-    }
-
-    public static List<String> listInstallItems() {
-        if (!isAvailable()) {
-            return Collections.emptyList();
-        }
-        try {
-            return ExoticaBridge.listInstallItems();
-        } catch (LinkageError e) {
-            log.warn("Exotica Technologies version not compatible, no exotic install items stocked", e);
-        } catch (RuntimeException e) {
-            log.warn("Could not list Exotica install items", e);
         }
         return Collections.emptyList();
     }

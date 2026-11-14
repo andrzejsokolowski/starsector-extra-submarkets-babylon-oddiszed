@@ -34,8 +34,8 @@ tes_enable_lions_guard,,,,Lion's Guard Market,,Boolean,true,,,,Original store: L
 tes_enable_weapon_bazaar,,,,Weapon Bazaar,,Boolean,true,,,,Original store: weapons from across the sector.,,,,,Original Stores
 tes_enable_faction_roulette,,,,Faction of the Month,,Boolean,true,,,,Original store: rotating faction stock.,,,,,Original Stores
 tes_enable_player_market,,,,Building Your Shit,,Boolean,true,,,,Original store: build from your blueprints.,,,,,Original Stores
-tes_enable_treasury_specials,,,,Treasury - Specials,,Boolean,true,,,,"The Treasury: every special item you can use, 999 of each.",,,,,Treasury
-tes_enable_treasury_blueprints,,,,Treasury - Blueprints,,Boolean,true,,,,"The Treasury: every blueprint package and every rare ship, weapon and fighter blueprint.",,,,,Treasury
-tes_enable_treasury_modspecs,,,,Treasury - Modspecs,,Boolean,true,,,,The Treasury: a modspec for every hull mod you don't know yet.,,,,,Treasury
-tes_enable_treasury_exotics,,,,Treasury - Exotics,,Boolean,true,,,,"The Treasury, with Exotica Technologies only: every exotic in its normal, corrupted and pure form.",,,,,Treasury
-tes_enable_treasury_upgrades,,,,Treasury - Upgrades,,Boolean,true,,,,"The Treasury, with Exotica Technologies only: every upgrade at every level.",,,,,Treasury
+tes_enable_treasury_specials,,,,Specials,,Boolean,true,,,,"The Treasury: every special item you can use, 999 of each.",,,,,Treasury
+tes_enable_treasury_blueprints,,,,Blueprints,,Boolean,true,,,,"The Treasury: one of each blueprint and blueprint package you don't know yet, plus blueprint items you use up.",,,,,Treasury
+tes_enable_treasury_modspecs,,,,Hullmod Specs,,Boolean,true,,,,The Treasury: one spec for each hull mod you don't know yet.,,,,,Treasury
+tes_enable_treasury_exotics,,,,Exotics,,Boolean,true,,,,"The Treasury, with Exotica Technologies only: every exotic chip in every form.",,,,,Treasury
+tes_enable_treasury_upgrades,,,,Upgrades,,Boolean,true,,,,"The Treasury, with Exotica Technologies only: every upgrade chip at every level.",,,,,Treasury

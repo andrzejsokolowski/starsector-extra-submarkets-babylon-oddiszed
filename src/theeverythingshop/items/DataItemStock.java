@@ -26,7 +26,7 @@ import java.util.Random;
 import java.util.Set;
 
 /**
- * Special items that only work with data, one stack per valid value. Every builder reads
+ * Special items that only work with data, one entry per valid value. Every builder reads
  * only the public game API and the mod's own data files, does nothing when its mod is
  * missing, and checks each value before use, because a wrong value crashes most of these.
  */
@@ -37,7 +37,15 @@ public class DataItemStock {
     // How many different Vulpoids are on the shelf: each copy is its own person
     private static final int VULPOIDS = 20;
 
-    /** Item ids handled here; the plain-item check skips them. */
+    /** Exiled Sector schematics that work without data; sold in Blueprints, not Specials. */
+    public static final Set<String> EXILED_SCHEMATICS = new HashSet<String>(Arrays.asList(
+            "exiledSector_master_schematic", "exiledSector_logistics_schematic",
+            "exiledSector_deintegration_schematic"));
+
+    /**
+     * Item ids handled here, or never sold plain because they need data (Knowledge
+     * Constructs, forge templates and cryochambers are no longer sold at all).
+     */
     public static final Set<String> DATA_ITEM_IDS = new HashSet<String>(Arrays.asList(
             "rat_alteration_install", "rat_consumeable_industry", "rat_artifact",
             "zea_recorder", "SA_augmentBlueprint", "sms_construct",
@@ -46,30 +54,41 @@ public class DataItemStock {
             "cs_geneSplicer", "IndEvo_ForgeTemplate_1", "IndEvo_ForgeTemplate_2", "IndEvo_ForgeTemplate_3",
             "IndEvo_ForgeTemplate_4", "IndEvo_PetBox"));
 
-    private final CargoAPI cargo;
+    private final List<String[]> out = new ArrayList<String[]>();
     private final int qty;
     private final SettingsAPI settings = Global.getSettings();
     private final Random random = new Random();
 
-    private DataItemStock(CargoAPI cargo, int qty) {
-        this.cargo = cargo;
+    private DataItemStock(int qty) {
         this.qty = qty;
     }
 
-    public static void addAll(CargoAPI cargo, int qty) {
-        DataItemStock stock = new DataItemStock(cargo, qty);
+    /** The data items sold in Specials, {id, data, amount}. */
+    public static List<String[]> specials(int qty) {
+        final DataItemStock stock = new DataItemStock(qty);
         stock.run("RAT hull alterations", new Runnable() { public void run() { stock.ratAlterations(); } });
-        stock.run("RAT industry blueprints", new Runnable() { public void run() { stock.ratIndustries(); } });
         stock.run("RAT artifacts", new Runnable() { public void run() { stock.ratArtifacts(); } });
         stock.run("Elysian Data Recorders", new Runnable() { public void run() { stock.zeaRecorders(); } });
-        stock.run("Station Augment blueprints", new Runnable() { public void run() { stock.stationAugments(); } });
-        stock.run("Knowledge Constructs", new Runnable() { public void run() { stock.knowledgeConstructs(); } });
         stock.run("Knowledge Superconstructs", new Runnable() { public void run() { stock.superconstructs(); } });
         stock.run("Vulpoids", new Runnable() { public void run() { stock.vulpoids(); } });
         stock.run("Exiled Sector items", new Runnable() { public void run() { stock.exiledSector(); } });
         stock.run("Gene Splicers", new Runnable() { public void run() { stock.geneSplicers(); } });
-        stock.run("Forge Templates", new Runnable() { public void run() { stock.forgeTemplates(); } });
-        stock.run("Cryochambers", new Runnable() { public void run() { stock.pets(); } });
+        return stock.out;
+    }
+
+    /** Station Augment blueprints, one entry per augment, {id, data, amount}. Learn-once. */
+    public static List<String[]> learnableBlueprints() {
+        final DataItemStock stock = new DataItemStock(1);
+        stock.run("Station Augment blueprints", new Runnable() { public void run() { stock.stationAugments(); } });
+        return stock.out;
+    }
+
+    /** Blueprint items that are used up (RAT industry blueprints, Exiled Sector schematics). */
+    public static List<String[]> consumableBlueprints(int qty) {
+        final DataItemStock stock = new DataItemStock(qty);
+        stock.run("RAT industry blueprints", new Runnable() { public void run() { stock.ratIndustries(); } });
+        stock.run("Exiled Sector schematics", new Runnable() { public void run() { stock.exiledSchematics(); } });
+        return stock.out;
     }
 
     private void run(String what, Runnable builder) {
@@ -78,7 +97,6 @@ public class DataItemStock {
         } catch (Throwable t) {
             log.warn("Could not stock " + what, t);
         }
-        cargo.removeEmptyStacks();
     }
 
     private boolean hasItem(String id) {
@@ -94,12 +112,7 @@ public class DataItemStock {
     }
 
     private void add(String id, String data, int amount) {
-        try {
-            cargo.addSpecial(new SpecialItemData(id, data), amount);
-        } catch (Throwable t) {
-            log.warn("Skipping " + id + " " + data, t);
-            cargo.removeEmptyStacks();
-        }
+        out.add(new String[] { id, data, String.valueOf(amount) });
     }
 
     private JSONArray csv(String idColumn, String path, String modId) {
@@ -203,31 +216,6 @@ public class DataItemStock {
         }
     }
 
-    // Ship Mastery: a Knowledge Construct for every hull it can give mastery to
-    private void knowledgeConstructs() {
-        if (!hasItem("sms_construct")) {
-            return;
-        }
-        for (ShipHullSpecAPI h : settings.getAllShipHullSpecs()) {
-            if (h.isDefaultDHull() || h.isDHull() || h.isRestoreToBase()) {
-                continue;
-            }
-            if (h.getHullSize() == ShipAPI.HullSize.FIGHTER) {
-                continue;
-            }
-            if (h.getHints().contains(ShipHullSpecAPI.ShipTypeHints.STATION)) {
-                continue;
-            }
-            if (h.getHints().contains(ShipHullSpecAPI.ShipTypeHints.UNBOARDABLE)
-                    && !h.hasTag(Tags.AUTOMATED_RECOVERABLE)) {
-                continue;
-            }
-            if (h.hasTag(Tags.RESTRICTED) || h.hasTag(Tags.NO_DROP)) {
-                continue;
-            }
-            add("sms_construct", h.getHullId());
-        }
-    }
 
     // Ship Mastery: the three superconstructs only work with their "active" data
     private void superconstructs() {
@@ -254,8 +242,8 @@ public class DataItemStock {
         }
     }
 
-    // Exiled Sector: hull items and subroutines (one roll each), star charts of every tier,
-    // and refit schematics. Wormhole anchors stay out, like every other anchor.
+    // Exiled Sector: hull items and subroutines (one roll each) and star charts of every tier.
+    // Wormhole anchors stay out, like every other anchor.
     private void exiledSector() {
         if (hasItem("exiledSector_socketable")) {
             for (String file : new String[] { "hull_items.csv", "subroutines.csv" }) {
@@ -275,9 +263,18 @@ public class DataItemStock {
                         "{\"d\":\"star_chart\",\"s\":" + random.nextLong() + ",\"t\":" + tier + "}");
             }
         }
+    }
+
+    // Exiled Sector schematics: the four refit schematic tiers and the three single schematics
+    private void exiledSchematics() {
         if (hasItem("exiledSector_refit_schematic")) {
             for (String tier : new String[] { "SCRAPPED", "STANDARD", "MILITARY", "DOMAIN" }) {
                 add("exiledSector_refit_schematic", tier);
+            }
+        }
+        for (String id : EXILED_SCHEMATICS) {
+            if (hasItem(id)) {
+                add(id, null);
             }
         }
     }
@@ -303,53 +300,5 @@ public class DataItemStock {
         }
     }
 
-    // Industrial Evolution: a one-charge Forge Template for every hull on IndEvo's print list
-    private void forgeTemplates() {
-        if (!modOn("IndEvo") || !hasItem("IndEvo_ForgeTemplate_1")) {
-            return;
-        }
-        Map<String, ShipHullSpecAPI> hulls = new HashMap<String, ShipHullSpecAPI>();
-        for (ShipHullSpecAPI h : settings.getAllShipHullSpecs()) {
-            hulls.put(h.getHullId(), h);
-        }
-        String path = "data/config/indEvo/printing_whitelist.csv";
-        try {
-            path = settings.getString("IndEvo_printList");
-        } catch (Throwable t) {
-            // keep the default path
-        }
-        JSONArray rows = csv("id", path, "IndEvo");
-        List<String> done = new ArrayList<String>();
-        for (int i = 0; i < rows.length(); i++) {
-            JSONObject row = rows.optJSONObject(i);
-            String id = row == null ? "" : row.optString("id", "").trim();
-            ShipHullSpecAPI h = hulls.get(id); // unknown ids are skipped: they crash the template
-            if (h == null || "ziggurat".equals(id) || h.isDHull() || h.isDefaultDHull() || done.contains(id)) {
-                continue;
-            }
-            done.add(id);
-            add("IndEvo_ForgeTemplate_1", id);
-        }
-    }
 
-    // Industrial Evolution: a Cryochamber for every pet that can be sold
-    private void pets() {
-        if (!modOn("IndEvo") || !hasItem("IndEvo_PetBox")) {
-            return;
-        }
-        JSONArray rows = csv("id", "data/campaign/pets.csv", "IndEvo");
-        for (int i = 0; i < rows.length(); i++) {
-            JSONObject row = rows.optJSONObject(i);
-            if (row == null) {
-                continue;
-            }
-            String id = row.optString("id", "").trim();
-            String tags = row.optString("tags", "");
-            if (id.isEmpty() || id.startsWith("#") || tags.contains("no_sell") || tags.contains("no_drop")
-                    || row.optString("icon", "").trim().isEmpty()) {
-                continue;
-            }
-            add("IndEvo_PetBox", id);
-        }
-    }
 }

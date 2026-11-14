@@ -44,6 +44,10 @@ small quota that runs out. The workspace `AGENTS.md` has the full routine.
 - Exotica Technologies is touched only by `theeverythingshop.compat.ExoticaBridge`, through
   `ExoticaCompat`, which catches `LinkageError` so a missing or different Exotica fork just closes
   the Exotica shops.
+- Station Augments is touched only by `StationAugmentsBridge` through `StationAugmentsCompat` (same
+  pattern), to hide Station Augment blueprints the player already knows. Compile-only too.
+- Blueprints and Hullmod Specs sell one of each and remember what the player bought there
+  (`TreasuryShopBase.boughtKeys`, saved with the game); every Treasury shop sorts by mod, then name.
 - Which special items are sold: `theeverythingshop.items.SpecialItemRules` (plain items),
   `DataItemStock` (items that need data), `data/config/the_everything_shop/excluded_items.csv`
   (never sold).

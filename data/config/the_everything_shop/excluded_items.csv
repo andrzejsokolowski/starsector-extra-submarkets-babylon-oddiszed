@@ -93,3 +93,5 @@ cq_reliquary_lamp,item,Captain's Quarters pieces sold once by one market
 cq_tesseract_cluster,item,Captain's Quarters one-time drops
 cq_chart_core,item,Captain's Quarters one-time drops
 cq_nexus_shard,item,Captain's Quarters one-time drops
+IndEvo_EmptForgeTemplate,item,Forge templates are not sold
+IndEvo_DegForgeTemplate,item,Forge templates are not sold

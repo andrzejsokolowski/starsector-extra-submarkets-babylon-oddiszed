@@ -22,7 +22,7 @@ import java.util.Set;
  *
  * A special item with no data is sold when it is a colony item, has a right-click use, or is
  * on the include lists below, and is not excluded. Items that only work with data (hull
- * alteration installers, Exiled Sector hull items, forge templates...) are built by
+ * alteration installers, Exiled Sector hull items...) are built by
  * {@link DataItemStock} instead. data/config/the_everything_shop/excluded_items.csv lists one-offs,
  * quest items and items that crash; other mods can add rows to it.
  */
@@ -58,9 +58,11 @@ public class SpecialItemRules {
             "cs_formingFluid",
             // Emergent Threats: refit-screen consumables
             "vice_biochip_ai_commander", "vice_biochip_nemesis", "vice_signal_masker_device",
-            "vice_temporal_desync_item", "ix_biochip_sotf", "ix_nano_replicator",
-            // Industrial Evolution: empty and degraded forge templates
-            "IndEvo_EmptForgeTemplate", "IndEvo_DegForgeTemplate"));
+            "vice_temporal_desync_item", "ix_biochip_sotf", "ix_nano_replicator"));
+
+    /** AoTD Citadel Schematics: learn-once blueprints, sold in Blueprints, not Specials. */
+    public static final Set<String> CITADEL_SCHEMATICS = new HashSet<String>(Arrays.asList(
+            "aotd_tier_four_citadel", "aotd_tier_four_citadel_hightech"));
 
     // Plain items found by tag (IndEvo VPCs and consumables, UAF keycards, Captain's Quarters)
     private static final Set<String> INCLUDE_TAGS = new HashSet<String>(Arrays.asList(
@@ -99,10 +101,11 @@ public class SpecialItemRules {
         return excludedIds.contains(id);
     }
 
-    /** A special item sold with no data in Treasury - Specials. */
+    /** A special item sold with no data in Specials. */
     public static boolean isPlainShopItem(SpecialItemSpecAPI spec) {
         String id = spec.getId();
         if (id == null || TEMPLATE_IDS.contains(id) || DataItemStock.DATA_ITEM_IDS.contains(id)
+                || DataItemStock.EXILED_SCHEMATICS.contains(id) || CITADEL_SCHEMATICS.contains(id)
                 || isBlueprintPackage(spec) || isExcluded(id)) {
             return false;
         }

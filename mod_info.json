@@ -2,7 +2,7 @@
     "id": "the_everything_shop",
     "name": "The Everything Shop",
     "author": "Oddisz (some stores by Massacre)",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "modThreadId": "36286",
     "updateCheckURL": "https://raw.githubusercontent.com/andrzejsokolowski/starsector-the-everything-shop/main/the_everything_shop.version",
     "description": "Adds the Gate of Babylon, a nebula hidden in hyperspace whose stations sell everything: every hull, weapon and fighter wing, every AI core, and on The Treasury every special item, blueprint, modspec and Exotica item. Every shop and the procurement prices can be changed in the LunaLib settings.",

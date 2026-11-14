@@ -1,7 +1,5 @@
 package theeverythingshop.compat;
 
-import com.fs.starfarer.api.Global;
-import com.fs.starfarer.api.campaign.SpecialItemSpecAPI;
 import exoticatechnologies.modifications.exotics.Exotic;
 import exoticatechnologies.modifications.exotics.ExoticsHandler;
 import exoticatechnologies.modifications.exotics.types.ExoticType;
@@ -50,25 +48,6 @@ final class ExoticaBridge {
             }
             for (int level = 1; level <= upgrade.getMaxLevel(); level++) {
                 out.add(new String[] { "et_upgrade", upgrade.getKey() + "," + level });
-            }
-        }
-        return out;
-    }
-
-    /**
-     * The items that install one exotic (Hyperferrous Chain and the like): plain ids, kept only
-     * when the exotic they name in their params still exists.
-     */
-    static List<String> listInstallItems() {
-        List<String> out = new ArrayList<String>();
-        for (SpecialItemSpecAPI spec : Global.getSettings().getAllSpecialItemSpecs()) {
-            if (!spec.hasTag("exotica") || "et_exotic".equals(spec.getId()) || "et_upgrade".equals(spec.getId())
-                    || "et_crate".equals(spec.getId())) {
-                continue;
-            }
-            String params = spec.getParams();
-            if (params != null && ExoticsHandler.EXOTICS.containsKey(params.trim())) {
-                out.add(spec.getId());
             }
         }
         return out;

@@ -8,8 +8,8 @@ import theeverythingshop.items.DataItemStock;
 import theeverythingshop.items.SpecialItemRules;
 
 /**
- * Treasury - Specials: every special item the player can use, from every installed
- * mod, 999 of each. Blueprint packages, modspecs and Exotica items have their own shops.
+ * Specials: every special item the player can use, from every installed mod, 999 of each.
+ * Blueprints, hullmod specs and Exotica items have their own shops.
  */
 public class TreasurySpecials extends TreasuryShopBase {
 
@@ -26,11 +26,13 @@ public class TreasurySpecials extends TreasuryShopBase {
                 cargo.removeEmptyStacks();
             }
         }
-        DataItemStock.addAll(cargo, STOCK);
+        for (String[] entry : DataItemStock.specials(STOCK)) {
+            addSpecial(cargo, entry[0], entry[1], Integer.parseInt(entry[2]));
+        }
     }
 
     @Override
     protected String getDisplayName() {
-        return "Treasury - Specials";
+        return "Specials";
     }
 }

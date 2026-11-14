@@ -4,7 +4,7 @@ import com.fs.starfarer.api.campaign.CargoAPI;
 import theeverythingshop.compat.ExoticaCompat;
 
 /**
- * Treasury - Upgrades (Exotica Technologies only): every upgrade at every level it has.
+ * Upgrades (Exotica Technologies only): every upgrade at every level it has.
  */
 public class TreasuryUpgrades extends TreasuryExotics {
 
@@ -17,6 +17,6 @@ public class TreasuryUpgrades extends TreasuryExotics {
 
     @Override
     protected String getDisplayName() {
-        return "Treasury - Upgrades";
+        return "Upgrades";
     }
 }

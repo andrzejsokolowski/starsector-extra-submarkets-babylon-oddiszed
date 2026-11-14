@@ -3,22 +3,39 @@ package theeverythingshop.world.submarkets;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.CargoAPI;
 import com.fs.starfarer.api.campaign.CargoStackAPI;
+import com.fs.starfarer.api.ModSpecAPI;
 import com.fs.starfarer.api.campaign.CoreUIAPI;
+import com.fs.starfarer.api.campaign.PlayerMarketTransaction;
+import com.fs.starfarer.api.campaign.SpecialItemData;
+import com.fs.starfarer.api.campaign.SpecialItemSpecAPI;
 import com.fs.starfarer.api.campaign.RepLevel;
 import com.fs.starfarer.api.fleet.FleetMemberAPI;
 import com.fs.starfarer.api.impl.campaign.ids.Factions;
 import com.fs.starfarer.api.impl.campaign.submarkets.BaseSubmarketPlugin;
 import org.apache.log4j.Logger;
 
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
 /**
- * Base of the shops on the Treasury: 999 of everything, a restock every 30 days,
- * prices set by the player's standing with the Independents, no selling back.
+ * Base of the shops on the Treasury: 999 of everything (one of each in the learn-once
+ * shops), a restock every 30 days, prices set by the player's standing with the
+ * Independents, no selling back. Shelves are sorted by mod, then by name.
  */
 public abstract class TreasuryShopBase extends BaseSubmarketPlugin {
 
     public static final Logger log = Global.getLogger(TreasuryShopBase.class);
 
     public static final int STOCK = 999;
+
+    // One-copy shops: everything the player bought here, as "id|data". Never offered again.
+    // Saved with the game.
+    protected Set<String> boughtKeys = new HashSet<String>();
     protected static final float RESTOCK_INTERVAL_DAYS = 30f;
 
     protected abstract void addStock(CargoAPI cargo);
@@ -46,7 +63,92 @@ public abstract class TreasuryShopBase extends BaseSubmarketPlugin {
             log.error("Could not stock " + getDisplayName(), t);
         }
         cargo.removeEmptyStacks();
-        cargo.sort();
+        sortByModThenName(cargo);
+    }
+
+    /** Shops that sell one of each learn-once item; what was bought never comes back. */
+    protected boolean oneCopyEach() {
+        return false;
+    }
+
+    protected boolean alreadyBought(String id, String data) {
+        return boughtKeys != null && boughtKeys.contains(id + "|" + data);
+    }
+
+    /** One copy, unless the player bought this one here before. */
+    protected void addOne(CargoAPI cargo, String id, String data) {
+        if (alreadyBought(id, data)) {
+            return;
+        }
+        addSpecial(cargo, id, data, 1);
+    }
+
+    protected void addSpecial(CargoAPI cargo, String id, String data, int amount) {
+        try {
+            cargo.addSpecial(new SpecialItemData(id, data), amount);
+        } catch (Throwable t) {
+            log.warn("Skipping " + id + " " + data, t);
+            cargo.removeEmptyStacks();
+        }
+    }
+
+    @Override
+    public void reportPlayerMarketTransaction(PlayerMarketTransaction transaction) {
+        super.reportPlayerMarketTransaction(transaction);
+        if (!oneCopyEach() || transaction == null || transaction.getBought() == null) {
+            return;
+        }
+        if (boughtKeys == null) {
+            boughtKeys = new HashSet<String>();
+        }
+        for (CargoStackAPI stack : transaction.getBought().getStacksCopy()) {
+            SpecialItemData data = stack.getSpecialDataIfSpecial();
+            if (data != null) {
+                boughtKeys.add(data.getId() + "|" + data.getData());
+            }
+        }
+    }
+
+    /**
+     * The game's own sort goes by each item's order number from its mod, which mixes mods
+     * together. Sort by mod (the base game first), then by name.
+     */
+    protected static void sortByModThenName(CargoAPI cargo) {
+        List<CargoStackAPI> stacks = cargo.getStacksCopy();
+        final Map<CargoStackAPI, String> keys = new HashMap<CargoStackAPI, String>();
+        for (CargoStackAPI stack : stacks) {
+            keys.put(stack, sortKey(stack));
+        }
+        Collections.sort(stacks, new Comparator<CargoStackAPI>() {
+            @Override
+            public int compare(CargoStackAPI a, CargoStackAPI b) {
+                return keys.get(a).compareTo(keys.get(b));
+            }
+        });
+        cargo.clear();
+        for (CargoStackAPI stack : stacks) {
+            cargo.addItems(stack.getType(), stack.getData(), stack.getSize());
+        }
+    }
+
+    private static String sortKey(CargoStackAPI stack) {
+        String mod = "";
+        String name = "";
+        String data = "";
+        try {
+            if (stack.isSpecialStack()) {
+                SpecialItemSpecAPI spec = stack.getSpecialItemSpecIfSpecial();
+                ModSpecAPI source = spec == null ? null : spec.getSourceMod();
+                mod = source == null ? "" : source.getName();
+                SpecialItemData special = stack.getSpecialDataIfSpecial();
+                data = special == null || special.getData() == null ? "" : special.getData();
+            }
+            name = stack.getDisplayName();
+        } catch (Throwable t) {
+            // keep what we have
+        }
+        return (mod == null ? "" : mod.toLowerCase()) + "\u0001" + (name == null ? "" : name.toLowerCase())
+                + "\u0001" + data;
     }
 
     /**
